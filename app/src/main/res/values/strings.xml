@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Projet_L3ISEI_QUIZEM</string>
+    <!-- Home -->
+    <string name="home_make_survey_button">NOUVEAU FORMULAIRE</string>
+
+
+    <!-- Make survey -->
+    <string name="make_survey_title_input">Sans titre</string>
+    <string name="make_survey_question_title_input">Veuillez entrer une question...</string>
+
+    <string name="make_survey_multiple_choice">Choix multiple</string>
+
+    <!-- Survey collection -->
+    <string name="survey_collection_title">$s</string>
+    <string name="survey_collection_description">$s</string>
+    <string name="survey_collection_more">Détails</string>
+
+    <!-- Survey infos -->
+    <string name="survey_infos_title">$s</string>
+
+    <!-- Convert survey -->
+    <string name="convert_survey_title">Sans titre</string>
+    <string name="convert_survey_odt">.odt</string>
+    <string name="convert_survey_pdf">.pdf</string>
+    <string name="convert_survey_png">.png</string>
+
+    <!-- BOTTOM NAVIGATION VIEW -->
+    <string name="bottom_navigation_menu_home">Acceuil</string>
+    <string name="bottom_navigation_menu_collection">Collection</string>
+
+
+</resources>

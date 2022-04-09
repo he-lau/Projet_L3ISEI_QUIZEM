@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/make_survey_item"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="2dp"
+    >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="12dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            >
+            <TextView
+                android:id="@+id/num_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XX."
+                style="@style/TitleTextStyle"
+                android:layout_marginRight="8dp"
+                />
+            <EditText
+            android:id="@+id/make_survey_question_title"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:autofillHints="@null"
+            android:hint="@string/make_survey_question_title_input"
+            style="@style/SubtitleTextStyle"
+
+            android:inputType="textMultiLine"
+            android:maxLines="2"
+            android:layout_weight="1"
+            android:background="@null"
+
+            />
+
+        <ImageView
+            android:id="@+id/question_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cross"
+            android:contentDescription="supress"
+            android:background="#FFFFFF"
+            android:layout_margin="10dp"
+            android:scaleType="fitCenter"
+            />
+        
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="10dp"
+        >
+
+        <TextView
+            android:id="@+id/question_answer_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre de ligne de réponse : "
+            style="@style/DefaultTextStyle"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/question_answer_counter_less"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_remove"
+            app:tint="@color/medium_grey"
+            android:layout_marginRight="8dp"
+            />
+
+        <ImageView
+            android:id="@+id/question_answer_counter_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add"
+            app:tint="@color/turquoise"
+            />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

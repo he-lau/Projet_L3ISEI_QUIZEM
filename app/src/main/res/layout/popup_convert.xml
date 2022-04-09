@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="230dp"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/convert_survey_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/TitleTextStyle"
+        android:gravity="center_vertical"
+        android:layout_marginStart="20dp"
+        />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:background="@color/medium_grey"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:gravity="center"
+
+        android:showDividers="middle"
+        android:divider="@drawable/empty_tall_divider"
+        >
+
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="#FFFFFF"
+            android:id="@+id/convert_item"
+            android:layout_width="95dp"
+            android:layout_height="80dp"
+            app:cardElevation="8dp"
+            >
+            <ImageView
+                android:src="@drawable/ic_file_blue"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/convert_survey_odt"
+
+                />
+            <TextView
+
+                android:id="@+id/convert_text"
+                style="@style/TitleTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center_horizontal"
+                android:text="@string/convert_survey_odt" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="#FFFFFF"
+            android:layout_width="95dp"
+            android:layout_height="80dp"
+            app:cardElevation="8dp">
+            <ImageView
+
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+
+                android:contentDescription="@string/convert_survey_odt"
+
+                android:src="@drawable/ic_file_red" />
+            <TextView
+                style="@style/TitleTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center_horizontal"
+                android:text="@string/convert_survey_pdf" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="#FFFFFF"
+            android:layout_width="95dp"
+            android:layout_height="80dp"
+            app:cardElevation="8dp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+
+                android:contentDescription="@string/convert_survey_odt"
+
+                android:src="@drawable/ic_img" />
+            <TextView
+                style="@style/TitleTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center_horizontal"
+                android:text="@string/convert_survey_png" />
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/convert_button"
+        style="@style/ButonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@color/turquoise"
+
+        android:text="CONFIRMER"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
