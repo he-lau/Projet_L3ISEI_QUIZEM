@@ -7,7 +7,7 @@
     >
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/survey_title_convert"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/convert_survey_title"
@@ -25,39 +25,40 @@
         android:layout_height="1dp"
 
         android:background="@color/medium_grey"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintBottom_toBottomOf="@+id/survey_title_convert"
+        app:layout_constraintTop_toBottomOf="@+id/survey_title_convert" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:gravity="center"
-
-        android:showDividers="middle"
         android:divider="@drawable/empty_tall_divider"
-        >
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:showDividers="middle"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/survey_title_convert">
 
 
         <androidx.cardview.widget.CardView
-            app:cardBackgroundColor="#FFFFFF"
-            android:id="@+id/convert_item"
+            android:id="@+id/convert_item_odt"
             android:layout_width="95dp"
             android:layout_height="80dp"
-            app:cardElevation="8dp"
-            >
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardElevation="8dp">
+
             <ImageView
-                android:src="@drawable/ic_file_blue"
                 android:layout_width="30dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:contentDescription="@string/convert_survey_odt"
+                android:src="@drawable/ic_file_blue"
 
                 />
+
             <TextView
 
                 android:id="@+id/convert_text"
@@ -70,10 +71,12 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            app:cardBackgroundColor="#FFFFFF"
+            android:id="@+id/convert_item_pdf"
             android:layout_width="95dp"
             android:layout_height="80dp"
+            app:cardBackgroundColor="#FFFFFF"
             app:cardElevation="8dp">
+
             <ImageView
 
                 android:layout_width="30dp"
@@ -84,6 +87,7 @@
                 android:contentDescription="@string/convert_survey_odt"
 
                 android:src="@drawable/ic_file_red" />
+
             <TextView
                 style="@style/TitleTextStyle"
                 android:layout_width="match_parent"
@@ -94,10 +98,13 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            app:cardBackgroundColor="#FFFFFF"
+
+            android:id="@+id/convert_item_png"
             android:layout_width="95dp"
             android:layout_height="80dp"
+            app:cardBackgroundColor="#FFFFFF"
             app:cardElevation="8dp">
+
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="35dp"
@@ -107,6 +114,7 @@
                 android:contentDescription="@string/convert_survey_odt"
 
                 android:src="@drawable/ic_img" />
+
             <TextView
                 style="@style/TitleTextStyle"
                 android:layout_width="match_parent"

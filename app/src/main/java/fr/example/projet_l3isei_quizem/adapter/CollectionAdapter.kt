@@ -1,18 +1,27 @@
 package fr.example.projet_l3isei_quizem.adapter
 
 import android.app.Dialog
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
-import android.view.*
+import android.os.Build
+import android.util.SparseBooleanArray
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.view.marginBottom
 import androidx.recyclerview.widget.RecyclerView
-import fr.example.projet_l3isei_quizem.MainActivity
-import fr.example.projet_l3isei_quizem.R
-import fr.example.projet_l3isei_quizem.SurveyRepository
+import fr.example.projet_l3isei_quizem.*
 import fr.example.projet_l3isei_quizem.model.Survey
+
 
 /*
 *   adapter : permet de passé du model (DB, Array) à des composants UI
@@ -21,9 +30,15 @@ import fr.example.projet_l3isei_quizem.model.Survey
 class CollectionAdapter(
 
     private var surveyList: List<Survey>,
-    val context: MainActivity
+    val context: Context,
+
+
 
 ) : RecyclerView.Adapter<CollectionAdapter.ViewHolder>(){
+
+    var selectedConvert: Int = -1
+
+
 
     /*
     *
@@ -45,6 +60,7 @@ class CollectionAdapter(
 
     // définir la vue
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         val view = LayoutInflater
                    .from(parent.context)
                    .inflate(R.layout.item_collection, parent, false)
@@ -57,6 +73,17 @@ class CollectionAdapter(
     *
     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        // Popup
+        var popup:Dialog = Dialog(context, R.style.WideDialog)
+        popup.setContentView(R.layout.popup_convert)
+
+        //popupRef = popup
+
+        val convertTitle = popup.findViewById<TextView>(R.id.survey_title_convert)
+
+        holder.setIsRecyclable(false)
+
         // element courant avec position
         val currentSurvey = surveyList[position]
 
@@ -78,9 +105,9 @@ class CollectionAdapter(
         // Click "Convert"
         holder.buttonConvert.setOnClickListener {
 
-            // Popup
-            var popup:Dialog = Dialog(context, R.style.WideDialog)
-            popup.setContentView(R.layout.popup_convert)
+            //convertTitle.text = currentSurvey.title
+            convertTitle.setText(currentSurvey.title.drop(3))
+
             popup.getWindow()?.getAttributes()?.gravity = Gravity.BOTTOM;
 
             popup.setCancelable(true);
@@ -89,12 +116,123 @@ class CollectionAdapter(
             popup.show()
 
         }
+
         // Click odt/pdf/png
+
+        popup.findViewById<CardView>(R.id.convert_item_odt).setOnClickListener {
+
+            when(selectedConvert) {
+
+                -1 -> {
+                    selectedConvert = 0
+                    popup.findViewById<CardView>(R.id.convert_item_odt).setCardBackgroundColor(Color.rgb(230,230,230))
+                }
+
+                1 -> {
+                    popup.findViewById<CardView>(R.id.convert_item_pdf).setCardBackgroundColor(Color.WHITE)
+                    selectedConvert = 0
+                    popup.findViewById<CardView>(R.id.convert_item_odt).setCardBackgroundColor(Color.rgb(230,230,230))
+
+                }
+                2 -> {
+                    popup.findViewById<CardView>(R.id.convert_item_png).setCardBackgroundColor(Color.WHITE)
+                    selectedConvert = 0
+                    popup.findViewById<CardView>(R.id.convert_item_odt).setCardBackgroundColor(Color.rgb(230,230,230))
+                }
+
+            }
+        }
+
+        popup.findViewById<CardView>(R.id.convert_item_pdf).setOnClickListener {
+
+            when(selectedConvert) {
+
+                -1 -> {
+                    selectedConvert = 1
+                    popup.findViewById<CardView>(R.id.convert_item_pdf).setCardBackgroundColor(Color.rgb(230,230,230))
+                }
+
+                0 -> {
+                    popup.findViewById<CardView>(R.id.convert_item_odt).setCardBackgroundColor(Color.WHITE)
+                    selectedConvert = 1
+                    popup.findViewById<CardView>(R.id.convert_item_pdf).setCardBackgroundColor(Color.rgb(230,230,230))
+                }
+                2 -> {
+                    popup.findViewById<CardView>(R.id.convert_item_png).setCardBackgroundColor(Color.WHITE)
+                    selectedConvert = 1
+                    popup.findViewById<CardView>(R.id.convert_item_pdf).setCardBackgroundColor(Color.rgb(230,230,230))
+                }
+
+            }
+        }
+
+        popup.findViewById<CardView>(R.id.convert_item_png).setOnClickListener {
+
+            when(selectedConvert) {
+
+                -1 -> {
+                    selectedConvert = 2
+                    popup.findViewById<CardView>(R.id.convert_item_png).setCardBackgroundColor(Color.rgb(230,230,230))
+                }
+
+                1 -> {
+                    popup.findViewById<CardView>(R.id.convert_item_pdf).setCardBackgroundColor(Color.WHITE)
+                    selectedConvert = 2
+                    popup.findViewById<CardView>(R.id.convert_item_png).setCardBackgroundColor(Color.rgb(230,230,230))
+                }
+                0 -> {
+                    popup.findViewById<CardView>(R.id.convert_item_odt).setCardBackgroundColor(Color.WHITE)
+                    selectedConvert = 2
+                    popup.findViewById<CardView>(R.id.convert_item_png).setCardBackgroundColor(Color.rgb(230,230,230))
+                }
+
+            }
+        }
+
+
+            popup.findViewById<Button>(R.id.convert_button).setOnClickListener{
+            when(selectedConvert) {
+
+                // TODO : odt listener
+                //odt
+                0 -> {
+                    val intent = Intent(context, ConvertActivity::class.java)
+
+                    intent.putExtra("SURVEY", currentSurvey)
+                    intent.putExtra("FORMAT", "odt")
+                    context.startActivity(intent)
+
+                }
+                //pdf
+                1 -> {
+                    //popup.findViewById<Button>(R.id.convert_button).setText("test")
+                    val intent = Intent(context, ConvertActivity::class.java)
+
+                    intent.putExtra("SURVEY", currentSurvey)
+                    intent.putExtra("FORMAT", "pdf")
+                    context.startActivity(intent)
+                }
+                //png
+                2 -> {
+                    val intent = Intent(context, ConvertActivity::class.java)
+
+                    intent.putExtra("SURVEY", currentSurvey)
+                    intent.putExtra("FORMAT", "png")
+                    context.startActivity(intent)
+                }
+            }
+        }
+
+        // TODO : creation DetailActivity pour la visualisation des questionnaires
+
+
     }
+
 
     /*
     *   Nombre d'item à afficher
     *
     */
     override fun getItemCount(): Int = surveyList.size
+
 }

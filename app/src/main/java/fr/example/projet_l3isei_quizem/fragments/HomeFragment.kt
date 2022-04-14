@@ -14,9 +14,11 @@ import fr.example.projet_l3isei_quizem.R
 
 public class HomeFragment(
 
-    private val context: MainActivity
+    //private val context: MainActivity
 
 ) : Fragment() {
+
+    //constructor() : this(MainActivity())
 
     /*
     *   LayoutInflater : creer objet View (ou Layout) à partir du XML

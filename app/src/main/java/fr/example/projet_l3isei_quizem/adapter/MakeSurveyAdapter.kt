@@ -61,6 +61,8 @@ class MakeSurveyAdapter(
     // définir la vue
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
+        TODO("charger l'item layout pour les choix multiple")
+
             val view = LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.item_make_survey, parent, false)
@@ -137,6 +139,7 @@ class MakeSurveyAdapter(
             repo.writeNewSurvey(Survey(idCurrentSurvey,surveyTitle.text.toString(),"",questionsList))
 
         }
+
 
 
 

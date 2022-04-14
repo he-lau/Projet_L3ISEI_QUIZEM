@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.marginBottom
 import androidx.recyclerview.widget.RecyclerView
 import fr.example.projet_l3isei_quizem.MainActivity
 
@@ -14,9 +15,11 @@ import fr.example.projet_l3isei_quizem.SurveyRepository
 
 class CollectionFragment(
 
-    private val context:MainActivity
+   //private val context:MainActivity
 
 ) : Fragment() {
+
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,11 +41,17 @@ class CollectionFragment(
 
             // si le questionnaire ne contient qu'une question
             if (surveyList.get(i).questions.size==1)
-                surveyList.get(i).description = "1. "+surveyList.get(i).questions.get(0).content+"\n"+surveyList.get(i).questions.get(1).content
+                surveyList.get(i).description = "1. "+surveyList.get(i).questions.get(0).content+"\n"
+
         }
 
         // récupérer RecycleView collection
         val collectionRecyclerView = view.findViewById<RecyclerView>(R.id.collection_recycle_view)
+
+        //collectionRecyclerView.isNestedScrollingEnabled = false
+
+        val context =  requireContext()
+
 
         // Appel adapter
         collectionRecyclerView.adapter = CollectionAdapter(surveyList,context)

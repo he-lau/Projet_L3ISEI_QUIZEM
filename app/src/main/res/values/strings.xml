@@ -11,12 +11,12 @@
     <string name="make_survey_multiple_choice">Choix multiple</string>
 
     <!-- Survey collection -->
-    <string name="survey_collection_title">$s</string>
-    <string name="survey_collection_description">$s</string>
+    <string name="survey_collection_title">Sans titre</string>
+    <string name="survey_collection_description"></string>
     <string name="survey_collection_more">Détails</string>
 
     <!-- Survey infos -->
-    <string name="survey_infos_title">$s</string>
+    <string name="survey_infos_title">Sans titre</string>
 
     <!-- Convert survey -->
     <string name="convert_survey_title">Sans titre</string>
@@ -27,6 +27,9 @@
     <!-- BOTTOM NAVIGATION VIEW -->
     <string name="bottom_navigation_menu_home">Acceuil</string>
     <string name="bottom_navigation_menu_collection">Collection</string>
+
+    <!-- Download convet surveys -->
+    <string name="convert_survey_download">Téléchargement</string>
 
 
 </resources>

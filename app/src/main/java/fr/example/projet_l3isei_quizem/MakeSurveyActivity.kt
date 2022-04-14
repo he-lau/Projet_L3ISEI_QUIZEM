@@ -1,18 +1,26 @@
 package fr.example.projet_l3isei_quizem
 
+import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import fr.example.projet_l3isei_quizem.adapter.MakeSurveyAdapter
 import fr.example.projet_l3isei_quizem.model.Question
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.util.Log
 import android.widget.*
+import androidx.core.app.ActivityCompat
+import fr.example.projet_l3isei_quizem.model.Survey
 
 
 class MakeSurveyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // test
+        //val questionnaireIntent = intent.getSerializableExtra("SURVEY") as? Survey
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_make_survey)
@@ -57,7 +65,6 @@ class MakeSurveyActivity : AppCompatActivity() {
 
 
 
-
         // branchement adapter au RecyclerView
         val viewQuestions = findViewById<RecyclerView>(R.id.make_survey_recycle_view)
 
@@ -65,7 +72,4 @@ class MakeSurveyActivity : AppCompatActivity() {
 
     }
 
-    private fun confirm() {
-
-    }
 }

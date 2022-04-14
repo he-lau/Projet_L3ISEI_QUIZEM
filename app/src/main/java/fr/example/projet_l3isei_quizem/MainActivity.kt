@@ -29,22 +29,24 @@ class MainActivity : AppCompatActivity() {
 
         val navigationView = findViewById<BottomNavigationView>(R.id.navigation_view)
 
-        loadFragment(HomeFragment(this))
+        loadFragment(HomeFragment())
+
 
 
         /*
         *   Action sur le menu et maj du fragment & bouton creation questionnaire
         */
-        navigationView.setOnItemSelectedListener { item ->
+        navigationView?.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 // Acceuil
                 R.id.action_home_page -> {
-                    loadFragment(HomeFragment(this))
+                    loadFragment(HomeFragment())
                     return@setOnItemSelectedListener true
                 }
                 // Collection
                 R.id.action_collection_page -> {
-                    loadFragment(CollectionFragment(this))
+                    //loadFragment(CollectionFragment(this))
+                    loadFragment(CollectionFragment())
                     return@setOnItemSelectedListener true
                 }
                 else -> false
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
     /*
     *   Charger le fragment via support supportFragmentManager
