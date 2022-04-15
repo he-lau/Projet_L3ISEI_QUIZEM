@@ -7,7 +7,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import fr.example.projet_l3isei_quizem.MakeSurveyActivity
@@ -23,7 +26,6 @@ class MakeSurveyAdapter(
     private var questionsList: ArrayList<Question>,
     val context: MakeSurveyActivity,
     private val checkBox : CheckBox,
-    var checkedState: ArrayList<Boolean>,
     val confirm:TextView,
     val surveyTitle:EditText
     //private var itemStateArray:SparseBooleanArray = SparseBooleanArray(questionsList.size)
@@ -32,8 +34,6 @@ class MakeSurveyAdapter(
 
 
 ) : RecyclerView.Adapter<MakeSurveyAdapter.ViewHolder>(){
-
-
 
 
     /*
@@ -56,7 +56,7 @@ class MakeSurveyAdapter(
     // définir la vue
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        //TODO("charger l'item layout pour les choix multiple")
+        //TODO("charger l'item layout pour les choix multiple"), utiliser viewType !
 
             val view = LayoutInflater
                 .from(parent.context)
@@ -70,11 +70,7 @@ class MakeSurveyAdapter(
     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        /*
-        *   WARNING : A changer !!!
-        *   TODO : garder en mémoire les booléens du CheckBox
-        * */
-        holder.setIsRecyclable(false)
+        //holder.setIsRecyclable(false)
 
         // element courant avec position
         val currentQuestion = questionsList[position]
@@ -104,19 +100,22 @@ class MakeSurveyAdapter(
 
         holder.questionDelete.setOnClickListener {
             questionsList.remove(currentQuestion)
-            notifyDataSetChanged()
+            //notifyDataSetChanged()
+            notifyItemRemoved(position)
         }
 
         holder.questionCounterAdd.setOnClickListener{
             currentQuestion.nbReponses+=1
-            notifyDataSetChanged()
+            //notifyDataSetChanged()
+            notifyItemChanged(position)
         }
         holder.questionCounterLess.setOnClickListener{
             if (currentQuestion.nbReponses>0) {
                 currentQuestion.nbReponses-=1
             }
 
-            notifyDataSetChanged()
+            //notifyDataSetChanged()
+            notifyItemChanged(position)
         }
 
         holder.questionCounter.text = "Nombre de ligne de réponse : "+currentQuestion.nbReponses.toString()
@@ -135,11 +134,6 @@ class MakeSurveyAdapter(
 
         }
 
-
-
-
-
-
     }
 
 
@@ -150,5 +144,12 @@ class MakeSurveyAdapter(
     */
     override fun getItemCount(): Int = questionsList.size
 
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 
 }
