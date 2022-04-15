@@ -5,7 +5,8 @@ import java.io.Serializable
 class Question (
     var content: String = "Sans titre",
     var multiple: Boolean = false,
-    var reponses: ArrayList<String> = ArrayList<String>(),
+    // stocker les reponses pour les choix multiples
+    var reponses: ArrayList<String> = ArrayList(),
     var nbReponses: Int = 0
 ) : Serializable
 

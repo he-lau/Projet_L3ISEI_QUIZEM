@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
 import android.os.Environment
-import android.text.TextPaint
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,9 +28,9 @@ class ConvertActivity: AppCompatActivity() {
     private var questionsContent = ArrayList<String>()
     private var questionsResponse = ArrayList<Int>()
 
-    // dessiner l'image
-    private val WIDTH_PX = 500
-    private val HEIGHT_PX = 500
+    // dimension de l'image
+    private val width = 500
+    private val height = 500
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +41,7 @@ class ConvertActivity: AppCompatActivity() {
         // Toolbar avec retour activity parent
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.convert_toolbar)
         setSupportActionBar(toolbar)
+        //toolbar.title = ""
         getSupportActionBar()?.setTitle("")
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
@@ -72,8 +72,13 @@ class ConvertActivity: AppCompatActivity() {
                 }
             }
             "png" -> {
-                convertText.text = questionnaireIntent?.title?.drop(3).plus(".png")
-                savePNG()
+                convertText.text = questionnaireIntent?.title?.drop(3).plus(".jpeg")
+                try {
+                    savePNG()
+                } catch (e:FileNotFoundException) {
+                    e.printStackTrace()
+                }
+
             }
             "odt" -> {
                 convertText.text = questionnaireIntent?.title?.drop(3).plus(".odt")
@@ -85,7 +90,7 @@ class ConvertActivity: AppCompatActivity() {
     }
 
     private fun saveODT() {
-        TODO("saveODT()")
+        //TODO("saveODT()")
     }
 
 
@@ -102,6 +107,7 @@ class ConvertActivity: AppCompatActivity() {
 
         // ajout du titre
         val titleParagraph = Paragraph(filename)
+
         titleParagraph.setTextAlignment(TextAlignment.CENTER)
         titleParagraph.setFontSize(34f)
         titleParagraph.setMarginBottom(40f)
@@ -112,16 +118,17 @@ class ConvertActivity: AppCompatActivity() {
         // String avec toute les questions
         var paragraphQuestionsContent = ""
         // ligne de reponse
-        val line = "...........................................................................\n"
+        val line = "...........................................................................................\n"
 
 
         for (i in 1..questionsContent.count()) {
             // ajoute la question courante avec retour charriot
             paragraphQuestionsContent += i.toString()+". "+questionsContent[i-1]+"\n"
-            for (i in 1..questionsResponse[i-1]) {
+            for (j in 1..questionsResponse[i-1]) {
                 // ajoute les lignes de réponses
                 paragraphQuestionsContent += line
             }
+
         }
 
         // construction du Paragraph pour pouvoir ecrire sur le fichier
@@ -141,44 +148,40 @@ class ConvertActivity: AppCompatActivity() {
     private fun savePNG() {
 
         //create a file to write bitmap data
-        var f = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath, filename+".jpeg")
-        //f.createNewFile()
+        val f = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath, filename+".jpeg")
 
         //Convert bitmap to byte array
-        var bitmap = Bitmap.createBitmap(WIDTH_PX, HEIGHT_PX, Bitmap.Config.ARGB_8888)
+        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         bitmap.eraseColor(Color.WHITE)
 
-        var canvas = Canvas(bitmap)
-        var p = Paint()
+        val canvas = Canvas(bitmap)
+        val p = Paint()
 
+        p.color = Color.BLACK
+        p.textSize = 14f
 
-        p.setColor(Color.BLACK);
-        p.setTextSize(14f);
-
-        canvas.drawText(filename, 20f, 20f, p)
+        canvas.drawText(filename, 20f, 40f, p)
 
         // String avec toute les questions
         var paragraphQuestionsContent = ""
         // ligne de reponse
-        val line = "------------------------------------------------------------------------------------------------\n"
+        val line = "...........................................................................................\n"
 
 
         for (i in 1..questionsContent.count()) {
             // ajoute la question courante avec retour charriot
             paragraphQuestionsContent += i.toString()+". "+questionsContent[i-1]+"\n"
-            for (i in 1..questionsResponse[i-1]) {
+            for (j in 1..questionsResponse[i-1]) {
                 // ajoute les lignes de réponses
                 paragraphQuestionsContent += line
             }
         }
 
-        //p.setColor(Color.RED)
         p.textSize = 11f
 
-        //canvas.drawText(paragraphQuestionsContent, 80f, 80f, p)
-
-        var x = 80f
-        var y = 80f
+        // position depart des questions
+        val x = 80f
+        val y = 80f
 
         val questions = paragraphQuestionsContent.split('\n')
 
@@ -188,12 +191,12 @@ class ConvertActivity: AppCompatActivity() {
         }
 
 
-        var bos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100 /*ignored for PNG*/, bos)
-        var bitmapdata = bos.toByteArray()
+        val bos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100 , bos)
+        val bitmapdata = bos.toByteArray()
 
         //write the bytes in file
-        var fos = FileOutputStream(f)
+        val fos = FileOutputStream(f)
         fos.write(bitmapdata)
         fos.flush()
         fos.close()

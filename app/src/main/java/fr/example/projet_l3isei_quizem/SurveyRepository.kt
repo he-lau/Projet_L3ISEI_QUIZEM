@@ -3,7 +3,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import fr.example.projet_l3isei_quizem.model.Question
 import fr.example.projet_l3isei_quizem.model.Survey
 
 /*

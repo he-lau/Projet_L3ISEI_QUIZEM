@@ -3,10 +3,7 @@ package fr.example.projet_l3isei_quizem.adapter
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
-import android.os.Build
-import android.util.SparseBooleanArray
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +12,6 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.app.ActivityCompat.requestPermissions
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.view.marginBottom
 import androidx.recyclerview.widget.RecyclerView
 import fr.example.projet_l3isei_quizem.*
 import fr.example.projet_l3isei_quizem.model.Survey
@@ -75,7 +69,7 @@ class CollectionAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         // Popup
-        var popup:Dialog = Dialog(context, R.style.WideDialog)
+        val popup = Dialog(context, R.style.WideDialog)
         popup.setContentView(R.layout.popup_convert)
 
         //popupRef = popup
@@ -88,7 +82,7 @@ class CollectionAdapter(
         val currentSurvey = surveyList[position]
 
         // lien vers la db
-        val repo = SurveyRepository()
+        //val repo = SurveyRepository()
 
         // Maj du composant courant (titre et description)
         holder.surveyName.text = currentSurvey.title
@@ -108,10 +102,10 @@ class CollectionAdapter(
             //convertTitle.text = currentSurvey.title
             convertTitle.setText(currentSurvey.title.drop(3))
 
-            popup.getWindow()?.getAttributes()?.gravity = Gravity.BOTTOM;
+            popup.getWindow()?.getAttributes()?.gravity = Gravity.BOTTOM
 
-            popup.setCancelable(true);
-            popup.setCanceledOnTouchOutside(true);
+            popup.setCancelable(true)
+            popup.setCanceledOnTouchOutside(true)
 
             popup.show()
 

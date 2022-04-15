@@ -1,19 +1,15 @@
 package fr.example.projet_l3isei_quizem.adapter
 
-import android.content.Intent
 import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import fr.example.projet_l3isei_quizem.MainActivity
 import fr.example.projet_l3isei_quizem.MakeSurveyActivity
 import fr.example.projet_l3isei_quizem.R
 import fr.example.projet_l3isei_quizem.SurveyRepository
@@ -30,7 +26,6 @@ class MakeSurveyAdapter(
     var checkedState: ArrayList<Boolean>,
     val confirm:TextView,
     val surveyTitle:EditText
-
     //private var itemStateArray:SparseBooleanArray = SparseBooleanArray(questionsList.size)
 
 
@@ -61,7 +56,7 @@ class MakeSurveyAdapter(
     // définir la vue
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        TODO("charger l'item layout pour les choix multiple")
+        //TODO("charger l'item layout pour les choix multiple")
 
             val view = LayoutInflater
                 .from(parent.context)
@@ -85,8 +80,8 @@ class MakeSurveyAdapter(
         val currentQuestion = questionsList[position]
 
 
-        Log.d("INPUT checkBox", checkBox.isChecked.toString());
-        Log.d("COURANT no ${position+1}", currentQuestion.multiple.toString());
+        Log.d("INPUT checkBox", checkBox.isChecked.toString())
+        Log.d("COURANT no ${position+1}", currentQuestion.multiple.toString())
 
         holder.numQuestion.text = "N°"+(position+1).toString()
 

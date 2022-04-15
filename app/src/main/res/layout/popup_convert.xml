@@ -135,7 +135,7 @@
         android:layout_height="30dp"
         android:background="@color/turquoise"
 
-        android:text="CONFIRMER"
+        android:text="@string/convert_survey_confirm"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         app:layout_constraintBottom_toBottomOf="parent"

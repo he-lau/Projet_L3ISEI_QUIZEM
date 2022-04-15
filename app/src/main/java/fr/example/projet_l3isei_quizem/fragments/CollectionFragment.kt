@@ -5,21 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.marginBottom
 import androidx.recyclerview.widget.RecyclerView
-import fr.example.projet_l3isei_quizem.MainActivity
 
 import fr.example.projet_l3isei_quizem.R
 import fr.example.projet_l3isei_quizem.adapter.CollectionAdapter
 import fr.example.projet_l3isei_quizem.SurveyRepository
 
-class CollectionFragment(
-
-   //private val context:MainActivity
-
-) : Fragment() {
-
-
+class CollectionFragment: Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

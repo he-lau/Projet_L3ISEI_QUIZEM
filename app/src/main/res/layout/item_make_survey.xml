@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,9 +23,9 @@
                 android:id="@+id/num_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="XX."
+                android:text="@string/make_survey_question_no"
                 style="@style/TitleTextStyle"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 />
             <EditText
             android:id="@+id/make_survey_question_title"
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_cross"
-            android:contentDescription="supress"
+            android:contentDescription="@string/make_survey_question_sup"
             android:background="#FFFFFF"
             android:layout_margin="10dp"
             android:scaleType="fitCenter"
@@ -59,28 +59,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         >
 
         <TextView
             android:id="@+id/question_answer_counter"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Nombre de ligne de réponse : "
+            android:text="@string/make_survey_nb_answer"
             style="@style/DefaultTextStyle"
             android:layout_weight="1"
             />
 
         <ImageView
+            android:contentDescription="@string/make_survey_question_less"
             android:id="@+id/question_answer_counter_less"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_remove"
             app:tint="@color/medium_grey"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             />
 
         <ImageView
+            android:contentDescription="@string/make_survey_question_add"
             android:id="@+id/question_answer_counter_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

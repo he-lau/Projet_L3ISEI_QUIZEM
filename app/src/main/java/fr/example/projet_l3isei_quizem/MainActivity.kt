@@ -1,8 +1,6 @@
 package fr.example.projet_l3isei_quizem
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 

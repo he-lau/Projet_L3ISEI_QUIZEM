@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="fr.example.projet_l3isei_quizem">
 
     <uses-permission android:name="android.permission.INTERNET" />

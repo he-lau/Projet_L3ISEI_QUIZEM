@@ -34,7 +34,7 @@
         android:id="@+id/make_survey_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="confirmer"
+        android:text="@string/convert_survey_confirm"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
@@ -97,9 +97,9 @@
             android:focusable="false"
             android:id="@+id/multiple_choice"
             style="@style/SubtitleTextStyle"
-            android:layout_width="188dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:buttonTint="@color/dark_grey"
             android:text="@string/make_survey_multiple_choice"
@@ -107,6 +107,7 @@
             />
 
         <ImageButton
+            android:contentDescription="@string/content_description_add_question"
             android:id="@+id/make_survey_add"
             android:layout_width="100dp"
             android:layout_height="60dp"

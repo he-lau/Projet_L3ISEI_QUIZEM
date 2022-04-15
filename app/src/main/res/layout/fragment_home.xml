@@ -13,13 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/turquoise"
-        android:paddingLeft="30dip"
-        android:paddingRight="26dip"
+        android:paddingStart="30dip"
+        android:paddingEnd="26dip"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
 
-        android:drawableLeft="@drawable/ic_add_cercle"
-        android:drawableTint="#FFFFFF"
+        android:drawableStart="@drawable/ic_add_cercle"
+        android:drawableTint="@color/white"
         android:drawablePadding="2dp"
 
         android:text="@string/home_make_survey_button"

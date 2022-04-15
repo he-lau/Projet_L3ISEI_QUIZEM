@@ -7,16 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import fr.example.projet_l3isei_quizem.MainActivity
 import fr.example.projet_l3isei_quizem.MakeSurveyActivity
 import fr.example.projet_l3isei_quizem.R
 
 
-public class HomeFragment(
-
-    //private val context: MainActivity
-
-) : Fragment() {
+class HomeFragment : Fragment() {
 
     //constructor() : this(MainActivity())
 

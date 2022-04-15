@@ -9,10 +9,16 @@
     <string name="make_survey_question_title_input">Veuillez entrer une question...</string>
 
     <string name="make_survey_multiple_choice">Choix multiple</string>
+    <string name="make_survey_nb_answer">Nombre de ligne de réponse :</string>
+    <string name="make_survey_question_no">XX :</string>
+
+    <string name="make_survey_question_sup">Supprimer</string>
+    <string name="make_survey_question_add">Ajouter nombre de réponse</string>
+    <string name="make_survey_question_less">Retirer nombre de réponse</string>
 
     <!-- Survey collection -->
     <string name="survey_collection_title">Sans titre</string>
-    <string name="survey_collection_description"></string>
+    <string name="survey_collection_description"> </string>
     <string name="survey_collection_more">Détails</string>
 
     <!-- Survey infos -->
@@ -22,7 +28,8 @@
     <string name="convert_survey_title">Sans titre</string>
     <string name="convert_survey_odt">.odt</string>
     <string name="convert_survey_pdf">.pdf</string>
-    <string name="convert_survey_png">.png</string>
+    <string name="convert_survey_png">.jpeg</string>
+    <string name="convert_survey_confirm">Confirmer</string>
 
     <!-- BOTTOM NAVIGATION VIEW -->
     <string name="bottom_navigation_menu_home">Acceuil</string>
@@ -30,6 +37,13 @@
 
     <!-- Download convet surveys -->
     <string name="convert_survey_download">Téléchargement</string>
+
+    <!-- Image descriptions -->
+    <string name="content_description_logo2">logo2</string>
+    <string name="content_description_add_question">Ajout de question</string>
+    <string name="content_description_convert">Convertion d\'un questionnaire</string>
+    <string name="content_description_convert_confirm">Confirmer convertion</string>
+
 
 
 </resources>

@@ -7,6 +7,6 @@ class Survey (
     var title: String = "Sans titre",
     // description sera determinée par les questions
     var description: String = "",
-    var questions: ArrayList<Question> = ArrayList<Question>()
+    var questions: ArrayList<Question> = ArrayList()
 ) : Serializable
 
