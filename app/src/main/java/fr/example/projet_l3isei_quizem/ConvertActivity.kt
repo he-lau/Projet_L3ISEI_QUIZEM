@@ -74,7 +74,7 @@ class ConvertActivity: AppCompatActivity() {
             "png" -> {
                 convertText.text = questionnaireIntent?.title?.drop(3).plus(".jpeg")
                 try {
-                    savePNG()
+                    saveJPEG()
                 } catch (e:FileNotFoundException) {
                     e.printStackTrace()
                 }
@@ -82,6 +82,7 @@ class ConvertActivity: AppCompatActivity() {
             }
             "odt" -> {
                 convertText.text = questionnaireIntent?.title?.drop(3).plus(".odt")
+                                .plus("\n\n Pas encore implémenté, veuillez tester la conversion PDF et JPEG. ")
                 saveODT()
             }
         }
@@ -141,11 +142,11 @@ class ConvertActivity: AppCompatActivity() {
         // fermeture fichier
         document.close()
         // message
-        Toast.makeText(this, "PDF created", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "PDF created at ${pdfPath}", Toast.LENGTH_SHORT).show()
 
     }
 
-    private fun savePNG() {
+    private fun saveJPEG() {
 
         //create a file to write bitmap data
         val f = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath, filename+".jpeg")
@@ -201,8 +202,10 @@ class ConvertActivity: AppCompatActivity() {
         fos.flush()
         fos.close()
 
+        val path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
+
         // message
-        Toast.makeText(this, " JPEG created", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, " JPEG created at ${path}", Toast.LENGTH_SHORT).show()
     }
 
 }

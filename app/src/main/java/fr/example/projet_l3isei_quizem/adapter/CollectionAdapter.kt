@@ -92,10 +92,7 @@ class CollectionAdapter(
         if (position%2==1)
             holder.collectionItem.setCardBackgroundColor(Color.GRAY)
 
-        // Click Button "Détails"
-        holder.surveyDetails.setOnClickListener {
 
-        }
         // Click "Convert"
         holder.buttonConvert.setOnClickListener {
 
@@ -109,6 +106,35 @@ class CollectionAdapter(
 
             popup.show()
 
+        }
+
+        val popupDetails = Dialog(context, R.style.WideDialog)
+        popupDetails.setContentView(R.layout.popup_details)
+        val detailsText = popupDetails.findViewById<TextView>(R.id.popup_details_text)
+        val questionsDetailsText = popupDetails.findViewById<TextView>(R.id.popup_details_questions_text)
+
+
+        // Click Button "Détails"
+        holder.surveyDetails.setOnClickListener {
+
+            detailsText.setText(currentSurvey.title.drop(3).plus('\n'))
+
+            var questionsDetailsString = ""
+
+            currentSurvey.questions.forEach{
+                questionsDetailsString += it.content.plus('\n')
+            }
+
+            questionsDetailsText.text = questionsDetailsString
+
+
+            //detailsText.text = detailsString
+
+
+            popupDetails.setCancelable(true)
+            popupDetails.setCanceledOnTouchOutside(true)
+
+            popupDetails.show()
         }
 
         // Click odt/pdf/png
@@ -217,7 +243,6 @@ class CollectionAdapter(
             }
         }
 
-        // TODO : creation DetailActivity pour la visualisation des questionnaires
 
 
     }

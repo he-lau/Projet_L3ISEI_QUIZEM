@@ -38,7 +38,7 @@ class MakeSurveyActivity : AppCompatActivity() {
 
         checkBox.setOnCheckedChangeListener(null)
         // intance adapter
-        val adapter = MakeSurveyAdapter(questionsList, this, checkBox, checkedState, confirm, surveyTitle)
+        val adapter = MakeSurveyAdapter(questionsList, this, checkBox, confirm, surveyTitle)
         //checkBox.setOnCheckedChangeListener(null)
         // Ecouteurs
 
